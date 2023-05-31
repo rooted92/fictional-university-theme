@@ -39,15 +39,32 @@ while (have_posts()) {
         <?php }
         ?>
 
+            <?php 
+            // get pages returns pages in memory
+            $testArray = get_pages(array(
+                'child_of' => get_the_ID()
+            ));
 
-        <!-- <div class="page-links">
-            <h2 class="page-links__title"><a href="#">About Us</a></h2>
+            if ($the_parent or $testArray){ ?>
+        <div class="page-links">
+            <h2 class="page-links__title"><a href="<?php echo get_permalink($the_parent); ?>"><?php echo get_the_title($the_parent); ?></a></h2>
             <ul class="min-list">
-                <li class="current_page_item"><a href="#">Our History</a></li>
-                <li><a href="#">Our Goals</a></li>
+                <?php
+                    if($the_parent){
+                        $find_children_of = $the_parent;
+                    } else {
+                        $find_children_of = get_the_ID();
+                    }
+                // must pass arguments(associative array) to get specific pages
+                    wp_list_pages(array(
+                        'title_li' => null,
+                        'child_of' => $find_children_of,
+                        'sort_column' => 'menu-order'
+                    ));
+                ?>
             </ul>
-        </div> -->
-
+        </div>
+        <?php } ?>
         <div class="generic-content">
             <?php the_content(); ?>
         </div>
