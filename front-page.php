@@ -50,14 +50,15 @@ $count = 0;
 
 <?php
 // if wp function begins with get it likely returns value, else if the it echoes something
-    // the_title();
-    // get_the_title();
-    // the_ID();
-    // get_the_id();
+// the_title();
+// get_the_title();
+// the_ID();
+// get_the_id();
 ?>
 
 <div class="page-banner">
-    <div class="page-banner__bg-image" style="background-image: url(<?php echo get_theme_file_uri('/images/library-hero.jpg') ?>)"></div>
+    <div class="page-banner__bg-image"
+        style="background-image: url(<?php echo get_theme_file_uri('/images/library-hero.jpg') ?>)"></div>
     <div class="page-banner__content container t-center c-white">
         <h1 class="headline headline--large">Welcome!</h1>
         <h2 class="headline headline--medium">We think you&rsquo;ll like it here.</h2>
@@ -101,32 +102,42 @@ $count = 0;
     <div class="full-width-split__two">
         <div class="full-width-split__inner">
             <h2 class="headline headline--small-plus t-center">From Our Blogs</h2>
+            <?php
+            // Creating our CUSTOM QUERY
+            
+            // make an instance of wp query class takes in array as arg
+            $homepage_posts = new WP_Query(
+                array(
+                    // this will help us query for only two posts
+                    'posts_per_page' => 2,
+                    // 'post_type' => 'page'
+                    // 'category_name' => 'awards'
+                )
+            );
 
-            <div class="event-summary">
-                <a class="event-summary__date event-summary__date--beige t-center" href="#">
-                    <span class="event-summary__month">Jan</span>
-                    <span class="event-summary__day">20</span>
-                </a>
-                <div class="event-summary__content">
-                    <h5 class="event-summary__title headline headline--tiny"><a href="#">We Were Voted Best School</a>
-                    </h5>
-                    <p>For the 100th year in a row we are voted #1. <a href="#" class="nu gray">Read more</a></p>
+            // while we stll have posts
+            // now we can use properties from our new $homepage_posts object
+            while ($homepage_posts->have_posts()) {
+                // the post gets data ready
+                // using homepage_posts-> allows us to see what is inside of homepageposts
+                $homepage_posts->the_post(); ?>
+                <div class="event-summary">
+                    <a class="event-summary__date event-summary__date--beige t-center" href="<?php the_permalink(); ?>">
+                        <span class="event-summary__month"><?php the_time('M'); ?></span>
+                        <span class="event-summary__day"><?php the_time('d'); ?></span>
+                    </a>
+                    <div class="event-summary__content">
+                        <h5 class="event-summary__title headline headline--tiny"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                        </h5>
+                        <!-- trim words takes two arguments: content you want to limit, how many words to limit too-->
+                        <p><?php echo wp_trim_words(get_the_content(), 18); ?><a href="<?php the_permalink(); ?>" class="nu gray">Read more</a></p>
+                    </div>
                 </div>
-            </div>
-            <div class="event-summary">
-                <a class="event-summary__date event-summary__date--beige t-center" href="#">
-                    <span class="event-summary__month">Feb</span>
-                    <span class="event-summary__day">04</span>
-                </a>
-                <div class="event-summary__content">
-                    <h5 class="event-summary__title headline headline--tiny"><a href="#">Professors in the National
-                            Spotlight</a></h5>
-                    <p>Two of our professors have been in national news lately. <a href="#" class="nu gray">Read
-                            more</a></p>
-                </div>
-            </div>
-
-            <p class="t-center no-margin"><a href="#" class="btn btn--yellow">View All Blog Posts</a></p>
+            <?php }
+                // right after using a custom query we want to reset all our data, sets everything back to default make this a habit
+                wp_reset_postdata();
+            ?>
+            <p class="t-center no-margin"><a href="<?php echo site_url('/blog') ?>" class="btn btn--yellow">View All Blog Posts</a></p>
         </div>
     </div>
 </div>
@@ -134,7 +145,8 @@ $count = 0;
 <div class="hero-slider">
     <div data-glide-el="track" class="glide__track">
         <div class="glide__slides">
-            <div class="hero-slider__slide" style="background-image: url(<?php echo get_theme_file_uri('/images/bus.jpg') ?>)">
+            <div class="hero-slider__slide"
+                style="background-image: url(<?php echo get_theme_file_uri('/images/bus.jpg') ?>)">
                 <div class="hero-slider__interior container">
                     <div class="hero-slider__overlay">
                         <h2 class="headline headline--medium t-center">Free Transportation</h2>
@@ -143,7 +155,8 @@ $count = 0;
                     </div>
                 </div>
             </div>
-            <div class="hero-slider__slide" style="background-image: url(<?php echo get_theme_file_uri('/images/apples.jpg') ?>)">
+            <div class="hero-slider__slide"
+                style="background-image: url(<?php echo get_theme_file_uri('/images/apples.jpg') ?>)">
                 <div class="hero-slider__interior container">
                     <div class="hero-slider__overlay">
                         <h2 class="headline headline--medium t-center">An Apple a Day</h2>
@@ -152,7 +165,8 @@ $count = 0;
                     </div>
                 </div>
             </div>
-            <div class="hero-slider__slide" style="background-image: url(<?php echo get_theme_file_uri('/images/bread.jpg') ?>)">
+            <div class="hero-slider__slide"
+                style="background-image: url(<?php echo get_theme_file_uri('/images/bread.jpg') ?>)">
                 <div class="hero-slider__interior container">
                     <div class="hero-slider__overlay">
                         <h2 class="headline headline--medium t-center">Free Food</h2>
