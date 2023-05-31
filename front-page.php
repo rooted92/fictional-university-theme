@@ -73,10 +73,25 @@ $count = 0;
         <div class="full-width-split__inner">
             <h2 class="headline headline--small-plus t-center">Upcoming Events</h2>
             <?php
+            // this is a custom query, we can also sort items from here
+            $today = date('Ymd');
             $homepage_events = new WP_Query(
                 array(
-                    'posts_per_page' => 2,
-                    'post_type' => 'event' //getting event type posts
+                    'posts_per_page' => -1,// when we add -1 we tell wp to return everything that meets the query
+                    'post_type' => 'event', //getting event type posts
+                    'meta_key' => 'event_date',//
+                    'orderby' => 'meta_value_num',// how we tell wp we want to order by meta key, we add num to meta value since dates are nums
+                    'order' => 'ASC',
+                    'meta_query' => array(//meta querys give you more control when searching for particular values
+                        // takes multiple arrays, we only use one because we are checking for dates that are in the past(just one thing)
+                        array(
+                            // these are our three parameters
+                            'key' => 'event_date',// the type of cusomt field
+                            'compare' => '>=', //the comparison operator
+                            'value' => $today, //todays date
+                            'type' => 'numeric'// compares dates as numeric value
+                        )
+                    ) // this filters out past events, we can give it an array because it takes multiple conditions
                 )
             );
 
