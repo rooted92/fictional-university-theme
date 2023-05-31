@@ -77,7 +77,7 @@ $count = 0;
             $today = date('Ymd');
             $homepage_events = new WP_Query(
                 array(
-                    'posts_per_page' => -1,// when we add -1 we tell wp to return everything that meets the query
+                    'posts_per_page' => 2,// when we add -1 we tell wp to return everything that meets the query
                     'post_type' => 'event', //getting event type posts
                     'meta_key' => 'event_date',//
                     'orderby' => 'meta_value_num',// how we tell wp we want to order by meta key, we add num to meta value since dates are nums

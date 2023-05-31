@@ -16,15 +16,25 @@ get_header();
 </div>
 <div class="container container--narrow page-section">
     <?php
+
+    // custom queries aren't always the answer!
+    // if we can work with the default query, there is no need  for a custom query
+    // we can just tweak the default query
+
+
+
     while (have_posts()) {
         the_post(); ?>
         <div class="event-summary">
             <a class="event-summary__date t-center" href="<?php echo the_permalink(); ?>">
                 <span class="event-summary__month">
-                    <?php the_time('M') ?>
+                    <?php
+                    $event_date = new DateTime(get_field('event_date'));
+                    echo $event_date->format('M');
+                    ?>
                 </span>
                 <span class="event-summary__day">
-                    <?php the_time('d') ?>
+                    <?php echo $event_date->format('d'); ?>
                 </span>
             </a>
             <div class="event-summary__content">
@@ -38,7 +48,8 @@ get_header();
     <?php }
     echo paginate_links()
         ?>
-
+    <hr class="section-break">
+    <p>Looking for a recap of past events? <a href="<?php echo site_url('/past-events') ?>">Check out our past events archive.</a> </p>
 </div>
 
 <?php

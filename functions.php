@@ -25,3 +25,26 @@ function university_features()
 }
 
 add_action('after_setup_theme', 'university_features');
+
+// this function will tweak the default query: we are tweaking it to not show past events only upcoming events
+function university_adjust_queries($query)
+{
+    $today = date('Ymd');
+    // $query->set('posts_per_page', '1'); this query is universal, also affects blog posts
+    // condition is checking to make sure we are not in admin AND that the posty type IS archive
+    if (!is_admin() && is_post_type_archive('event') && $query->is_main_query()) {
+        $query->set('meta_key', 'event_date');
+        $query->set('orderby', 'meta_value_num');
+        $query->set('order', 'ASC');
+        $query->set('meta_query', array(
+            array(
+                'key' => 'event_date', // the type of custom field
+                'compare' => '>=',//the comparison operator
+                'value' => $today,//todays date
+                'type' => 'numeric'
+            ))
+        );
+    }
+}
+
+add_action('pre_get_posts', 'university_adjust_queries');
