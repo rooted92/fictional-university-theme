@@ -35,7 +35,7 @@
                         <!-- is_page() returns a boolean if the argument you give is true, the arg needs to be a slug (section of url) -->
                         <!-- or if  the current pages' parent page is the about us page, then five it the current-menu-item class-->
                         <li <?php if (is_page('about-us') or wp_get_post_parent_id(0) == 12) echo 'class="current-menu-item"' ?>><a href="<?php echo site_url('/about-us') ?>">About Us</a></li>
-                        <li><a href="#">Programs</a></li> 
+                        <li <?php if(get_post_type() == 'program') echo 'class="current-menu-item"' ?> ><a href="<?php echo get_post_type_archive_link('program') ?>">Programs</a></li> 
                         <li <?php if(get_post_type() == 'event' OR is_page('past-events')) echo 'class="current-menu-item"' ?>><a href="<?php echo get_post_type_archive_link('event') ?>">Events</a></li>
                         <li><a href="#">Campuses</a></li>
                         <li <?php if(get_post_type() == 'post') echo 'class="current-menu-item"' ?>><a href="<?php echo site_url('/blog') ?>">Blog</a></li>

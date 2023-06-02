@@ -30,6 +30,15 @@ add_action('after_setup_theme', 'university_features');
 function university_adjust_queries($query)
 {
     $today = date('Ymd');
+
+    // if statement to query programs
+    if(!is_admin() AND is_post_type_archive('program') AND is_main_query()){
+        $query->set('orderby', 'title');
+        $query->set('order', 'ASC');
+        // remeber -1 will allow all programs to be listed at once (even if you had 100!), otherwise the default is 10
+        $query->set('posts_per_page', -1);
+    }
+
     // $query->set('posts_per_page', '1'); this query is universal, also affects blog posts
     // condition is checking to make sure we are not in admin AND that the posty type IS archive
     if (!is_admin() && is_post_type_archive('event') && $query->is_main_query()) {
