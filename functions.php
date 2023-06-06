@@ -19,6 +19,9 @@ function university_features()
 {
     // this function will add title to headers
     add_theme_support('title-tag');
+    add_theme_support('post-thumbnails');// will enable featured images for blog posts but not custom post types yet...
+    add_image_size('professor_landscape', 400, 260, true);
+    add_image_size('professor_portrait', 480, 650, true);
     // register_nav_menu('headerMenuLocation', 'Header Menu Location');
     // register_nav_menu('footerLocationOne', 'Footer Location One');
     // register_nav_menu('footerLocationTwo', 'Footer Location Two');

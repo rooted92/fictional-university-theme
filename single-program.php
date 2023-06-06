@@ -59,12 +59,19 @@ while (have_posts()) {
             echo '<hr class="section-break">';
             echo '<h2 class="headline headline--medium">' . get_the_title() . ' Professors</h2>';
 
+            echo '<ul class="professor-cards">';
             // use have_posts method on homepageevents object to access array of events
             while ($related_professors->have_posts()) {
                 $related_professors->the_post(); //call the post to get our data for displaying in browser withing the object NOT globally
                 ?>
-                <li><a href="<?php the_permalink(); ?>"><?php the_title(); the_ID() ?></a></li>
+                <li class="professor-card__list-item">
+                    <a class="professor-card" href="<?php the_permalink(); ?>">
+                        <img class="professor-card__image" src="<?php the_post_thumbnail_url('professor_landscape'); ?>" alt="">
+                        <span class="professor_card__name"><?php the_title(); ?></span>
+                    </a>
+                </li>
             <?php }
+            echo '</ul>';
         }
 
         // this function will: reset global post object and other functions to default url based query
