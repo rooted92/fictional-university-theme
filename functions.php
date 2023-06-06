@@ -1,4 +1,40 @@
 <?php
+
+// reusable function. Null makes args optional
+function pageBanner($args = null) {
+    // php logic will live here
+    if(!isset($args['title'])){
+        $args['title'] = get_the_title();
+    }
+    if(!isset($args['subtitle'])){
+        $args['subtitle'] = get_field('page_banner_subtitle');
+    }
+    if(!isset($args['photo'])){
+        if(get_field('page_banner_background_image') AND !is_archive() AND !is_home()){
+            $args['photo'] = get_field('page_banner_background_image')['sizes']['page_banner'];
+        } else {
+            $args['photo'] = get_theme_file_uri('/images/ocean.jpg');
+        }
+    }
+
+    ?>
+    <div class="page-banner">
+                                                                <!-- To dynamically change the background image we save getfield() to a variable then use bracket notation on that variable(it's an array) to access url -->
+        <div class="page-banner__bg-image"            
+            style="background-image: url(<?php echo $args['photo']; ?>)"></div>
+        <div class="page-banner__content container container--narrow">
+            <h1 class="page-banner__title">
+                <?php echo $args['title'] ?>
+            </h1>
+            <div class="page-banner__intro">
+                <p><?php echo $args['subtitle']; ?></p>
+            </div>
+        </div>
+    </div>
+
+<?php }
+
+
 // we can give wp instructions by using add_action() function
 // first argument tells wordpress what you want to do second arg tells wp what func to run
 function university_files()
@@ -22,6 +58,7 @@ function university_features()
     add_theme_support('post-thumbnails');// will enable featured images for blog posts but not custom post types yet...
     add_image_size('professor_landscape', 400, 260, true);
     add_image_size('professor_portrait', 480, 650, true);
+    add_image_size('page_banner', 1500, 350, true);
     // register_nav_menu('headerMenuLocation', 'Header Menu Location');
     // register_nav_menu('footerLocationOne', 'Footer Location One');
     // register_nav_menu('footerLocationTwo', 'Footer Location Two');
