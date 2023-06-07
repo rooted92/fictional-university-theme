@@ -64,7 +64,8 @@ $count = 0;
         <h2 class="headline headline--medium">We think you&rsquo;ll like it here.</h2>
         <h3 class="headline headline--small">Why don&rsquo;t you check out the <strong>major</strong> you&rsquo;re
             interested in?</h3>
-        <a href="<?php echo get_post_type_archive_link('program') ?>" class="btn btn--large btn--blue">Find Your Major</a>
+        <a href="<?php echo get_post_type_archive_link('program') ?>" class="btn btn--large btn--blue">Find Your
+            Major</a>
     </div>
 </div>
 
@@ -77,19 +78,22 @@ $count = 0;
             $today = date('Ymd');
             $homepage_events = new WP_Query(
                 array(
-                    'posts_per_page' => 2,// when we add -1 we tell wp to return everything that meets the query
-                    'post_type' => 'event', //getting event type posts
-                    'meta_key' => 'event_date',//
-                    'orderby' => 'meta_value_num',// how we tell wp we want to order by meta key, we add num to meta value since dates are nums
+                    'posts_per_page' => 2, // when we add -1 we tell wp to return everything that meets the query
+                    'post_type' => 'event',
+                    //getting event type posts
+                    'meta_key' => 'event_date', //
+                    'orderby' => 'meta_value_num', // how we tell wp we want to order by meta key, we add num to meta value since dates are nums
                     'order' => 'ASC',
-                    'meta_query' => array(//meta querys give you more control when searching for particular values
+                    'meta_query' => array( //meta querys give you more control when searching for particular values
                         // takes multiple arrays, we only use one because we are checking for dates that are in the past(just one thing)
                         array(
                             // these are our three parameters
-                            'key' => 'event_date',// the type of cusomt field
-                            'compare' => '>=', //the comparison operator
-                            'value' => $today, //todays date
-                            'type' => 'numeric'// compares dates as numeric value
+                            'key' => 'event_date', // the type of cusomt field
+                            'compare' => '>=',
+                            //the comparison operator
+                            'value' => $today,
+                            //todays date
+                            'type' => 'numeric' // compares dates as numeric value
                         )
                     ) // this filters out past events, we can give it an array because it takes multiple conditions
                 )
@@ -98,28 +102,12 @@ $count = 0;
             // use have_posts method on homepageevents object to access array of events
             while ($homepage_events->have_posts()) {
                 $homepage_events->the_post(); //call the post to get our data for displaying in browser withing the object NOT globally
-                ?>
-                <div class="event-summary">
-                    <a class="event-summary__date t-center" href="<?php echo the_permalink(); ?>">
-                        <span class="event-summary__month"><?php
-                            $event_date = new DateTime(get_field('event_date'));
-                            echo $event_date->format('M');
-                        ?></span>
-                        <span class="event-summary__day"><?php echo $event_date->format('d'); ?></span>
-                    </a>
-                    <div class="event-summary__content">
-                        <h5 class="event-summary__title headline headline--tiny"><a href="<?php echo the_permalink(); ?>"><?php the_title(); ?></a></h5>
-                        <p>  <?php if(has_excerpt()) {
-                                the_excerpt();
-                            } else {
-                                echo wp_trim_words(get_the_content(), 18);
-                            }?><a
-                                href="<?php echo the_permalink() ?>" class="nu gray">Learn more</a></p>
-                    </div>
-                </div>
-            <?php }
-            ?>                                          <!-- remember this function automatically gets links to page from post -->
-            <p class="t-center no-margin"><a href="<?php echo get_post_type_archive_link('event'); ?>" class="btn btn--blue">View All Events</a></p>
+                // think of the get_template_part function like a component in React
+                get_template_part('template-parts/content', 'event');
+            }
+            ?> <!-- remember this function automatically gets links to page from post -->
+            <p class="t-center no-margin"><a href="<?php echo get_post_type_archive_link('event'); ?>"
+                    class="btn btn--blue">View All Events</a></p>
         </div>
     </div>
     <div class="full-width-split__two">
@@ -158,12 +146,11 @@ $count = 0;
                         </h5>
                         <!-- trim words takes two arguments: content you want to limit, how many words to limit too-->
                         <p>
-                            <?php if(has_excerpt()) {
+                            <?php if (has_excerpt()) {
                                 the_excerpt();
                             } else {
                                 echo wp_trim_words(get_the_content(), 18);
-                            }?><a href="<?php the_permalink(); ?>"
-                                class="nu gray">Read more</a>
+                            } ?><a href="<?php the_permalink(); ?>" class="nu gray">Read more</a>
                         </p>
                     </div>
                 </div>

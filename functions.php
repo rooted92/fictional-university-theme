@@ -39,6 +39,7 @@ function pageBanner($args = null) {
 // first argument tells wordpress what you want to do second arg tells wp what func to run
 function university_files()
 {
+    wp_enqueue_script('googleMap', '//maps.googleapis.com/maps/api/js?key=AIzaSyAH66VBHTwOgjBoBgMoZqVFWAINcQS30CA', null, '1.0', true);
     // here we are loading js file there is a third argument for dependencies, in this case jquery, 4th arg is version, 5th arg is do you want to laod this file right before the closing body tag, set to true, so it loads at end, not beginning
     wp_enqueue_script('main-university-js', get_theme_file_uri('/build/index.js'), array('jquery'), '1.0', true);
     // in here we will tell what file to run (css)
@@ -97,3 +98,10 @@ function university_adjust_queries($query)
 }
 
 add_action('pre_get_posts', 'university_adjust_queries');
+
+function universityMapKey($api){
+    $api['key'] = 'AIzaSyAH66VBHTwOgjBoBgMoZqVFWAINcQS30CA';
+    return $api;
+}
+
+add_filter('acf/fields/google_map/api', 'universityMapKey');
