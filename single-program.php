@@ -6,7 +6,7 @@ get_header();
 // using wp function have_posts() to get all posts
 while (have_posts()) {
     // this func will keep track which post we are working with
-    the_post(); 
+    the_post();
     pageBanner();
     ?>
 
@@ -56,7 +56,9 @@ while (have_posts()) {
                 <li class="professor-card__list-item">
                     <a class="professor-card" href="<?php the_permalink(); ?>">
                         <img class="professor-card__image" src="<?php the_post_thumbnail_url('professor_landscape'); ?>" alt="">
-                        <span class="professor_card__name"><?php the_title(); ?></span>
+                        <span class="professor_card__name">
+                            <?php the_title(); ?>
+                        </span>
                     </a>
                 </li>
             <?php }
@@ -113,6 +115,21 @@ while (have_posts()) {
             }
         }
 
+        // remember to reset data for clean slate
+        wp_reset_postdata();
+        $related_campuses = get_field('related_campus');
+        // only output headlilne if not empty
+        if ($related_campuses) {
+            echo '<hr class="section-break">';
+            echo '<h2 class="headline headline--medium">' . get_the_title() . ' is Available At These Campuses: </h2>';
+            echo '<ul class="min-list link-list">';
+            foreach($related_campuses as $campus){
+                ?>
+                <li><a href="<?php echo get_the_permalink(); ?>"><?php echo get_the_title($campus); ?></a></li>
+                <?php
+            }
+            echo '</ul>';
+        }
 
         ?>
 

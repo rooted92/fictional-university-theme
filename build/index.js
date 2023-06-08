@@ -1,5 +1,4 @@
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./src/index.js":
@@ -8,14 +7,17 @@
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _css_style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../css/style.scss */ "./css/style.scss");
 /* harmony import */ var _modules_MobileMenu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/MobileMenu */ "./src/modules/MobileMenu.js");
 /* harmony import */ var _modules_HeroSlider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/HeroSlider */ "./src/modules/HeroSlider.js");
 /* harmony import */ var _modules_GoogleMap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/GoogleMap */ "./src/modules/GoogleMap.js");
+/* harmony import */ var _modules_Search__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/Search */ "./src/modules/Search.js");
 
 
 // Our modules / classes
+
 
 
 
@@ -24,6 +26,7 @@ __webpack_require__.r(__webpack_exports__);
 const mobileMenu = new _modules_MobileMenu__WEBPACK_IMPORTED_MODULE_1__["default"]();
 const heroSlider = new _modules_HeroSlider__WEBPACK_IMPORTED_MODULE_2__["default"]();
 const googleMap = new _modules_GoogleMap__WEBPACK_IMPORTED_MODULE_3__["default"]();
+const search = new _modules_Search__WEBPACK_IMPORTED_MODULE_4__["default"]();
 
 /***/ }),
 
@@ -33,6 +36,7 @@ const googleMap = new _modules_GoogleMap__WEBPACK_IMPORTED_MODULE_3__["default"]
   \**********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -116,6 +120,7 @@ class GMap {
   \***********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -157,6 +162,7 @@ class HeroSlider {
   \***********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -180,12 +186,23 @@ class MobileMenu {
 
 /***/ }),
 
+/***/ "./src/modules/Search.js":
+/*!*******************************!*\
+  !*** ./src/modules/Search.js ***!
+  \*******************************/
+/***/ (() => {
+
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\src\\modules\\Search.js: Unexpected token (10:4)\n\n\u001b[0m \u001b[90m  8 |\u001b[39m         \u001b[90m// your constructor is where you describe/give birth to your object\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m  9 |\u001b[39m         \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 10 |\u001b[39m     }\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 11 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 12 |\u001b[39m     \u001b[90m// 2. events \u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 13 |\u001b[39m     \u001b[90m// here is where you connect dots between object and events it can perform\u001b[39m\u001b[0m\n    at instantiate (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:63:32)\n    at constructor (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:358:12)\n    at JSXParserMixin.raise (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:3255:19)\n    at JSXParserMixin.unexpected (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:3285:16)\n    at JSXParserMixin.parseIdentifierName (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:12055:12)\n    at JSXParserMixin.parseIdentifier (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:12038:23)\n    at JSXParserMixin.parseMember (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:10959:28)\n    at JSXParserMixin.parseSubscript (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:10936:21)\n    at JSXParserMixin.parseSubscripts (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:10903:19)\n    at JSXParserMixin.parseExprSubscripts (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:10894:17)\n    at JSXParserMixin.parseUpdate (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:10873:21)\n    at JSXParserMixin.parseMaybeUnary (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:10849:23)\n    at JSXParserMixin.parseMaybeUnaryOrPrivate (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:10687:61)\n    at JSXParserMixin.parseExprOps (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:10692:23)\n    at JSXParserMixin.parseMaybeConditional (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:10669:23)\n    at JSXParserMixin.parseMaybeAssign (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:10630:21)\n    at JSXParserMixin.parseExpressionBase (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:10584:23)\n    at C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:10580:39\n    at JSXParserMixin.allowInAnd (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:12275:16)\n    at JSXParserMixin.parseExpression (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:10580:17)\n    at JSXParserMixin.parseStatementContent (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:12733:23)\n    at JSXParserMixin.parseStatementLike (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:12584:17)\n    at JSXParserMixin.parseStatementListItem (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:12564:17)\n    at JSXParserMixin.parseBlockOrModuleBlockBody (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:13185:61)\n    at JSXParserMixin.parseBlockBody (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:13178:10)\n    at JSXParserMixin.parseBlock (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:13166:10)\n    at JSXParserMixin.parseFunctionBody (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:11947:24)\n    at JSXParserMixin.parseFunctionBodyAndFinish (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:11933:10)\n    at JSXParserMixin.parseMethod (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:11891:31)\n    at JSXParserMixin.pushClassMethod (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:13621:30)\n    at JSXParserMixin.parseClassMemberWithIsStatic (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:13493:12)\n    at JSXParserMixin.parseClassMember (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:13437:10)\n    at C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:13387:14\n    at JSXParserMixin.withSmartMixTopicForbiddingContext (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:12257:14)\n    at JSXParserMixin.parseClassBody (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:13367:10)\n    at JSXParserMixin.parseClass (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:13345:22)\n    at JSXParserMixin.parseStatementContent (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:12613:21)\n    at JSXParserMixin.parseStatementLike (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:12584:17)\n    at JSXParserMixin.parseModuleItem (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:12561:17)\n    at JSXParserMixin.parseBlockOrModuleBlockBody (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:13185:36)\n    at JSXParserMixin.parseBlockBody (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:13178:10)\n    at JSXParserMixin.parseProgram (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:12460:10)\n    at JSXParserMixin.parseTopLevel (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:12450:25)\n    at JSXParserMixin.parse (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:14347:10)\n    at parse (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\parser\\lib\\index.js:14388:38)\n    at parser (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\core\\lib\\parser\\index.js:41:34)\n    at parser.next (<anonymous>)\n    at normalizeFile (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\core\\lib\\transformation\\normalize-file.js:64:38)\n    at normalizeFile.next (<anonymous>)\n    at run (C:\\Users\\petec\\Local Sites\\fictional-university\\app\\public\\wp-content\\themes\\fictional-university-theme\\node_modules\\@babel\\core\\lib\\transformation\\index.js:21:50)");
+
+/***/ }),
+
 /***/ "./css/style.scss":
 /*!************************!*\
   !*** ./css/style.scss ***!
   \************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
@@ -198,6 +215,7 @@ __webpack_require__.r(__webpack_exports__);
   \*******************************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Glide)

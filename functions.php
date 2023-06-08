@@ -95,6 +95,12 @@ function university_adjust_queries($query)
             ))
         );
     }
+
+    // this will query campuses
+    if(!is_admin() AND is_post_type_archive('campus') AND is_main_query()){
+        // remeber -1 will allow all programs to be listed at once (even if you had 100!), otherwise the default is 10
+        $query->set('posts_per_page', -1);
+    }
 }
 
 add_action('pre_get_posts', 'university_adjust_queries');
