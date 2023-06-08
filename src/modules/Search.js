@@ -32,8 +32,13 @@ class Search {
         $("body").removeClass("body-no-scroll");
     }
 
-    keyPressDispatcher() {
-        console.log('This is a test.');
+    keyPressDispatcher(e) {
+        console.log(e.keyCode);
+        if (e.keyCode === 83) {
+            this.openOverlay();
+        } else if (e.keyCode === 27) {
+            this.closeOverlay();
+        }
     }
 }
 
