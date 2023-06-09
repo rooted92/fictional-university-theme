@@ -48,6 +48,12 @@ function university_files()
     wp_enqueue_style('custom_google_fonts', '//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Roboto:100,300,400,400i,700,700i');
     wp_enqueue_style('university_main_styles', get_theme_file_uri('/build/style-index.css')); //importing css files from folder we downloaded from github
     wp_enqueue_style('university_extra_styles', get_theme_file_uri('/build/index.css'));
+
+    // this is a wordpress function, takes 3 args
+    // this function will make url dynamic and get current url of site you are on
+    wp_localize_script('main-university-js', 'university_data', array(
+        'root_url' => get_site_url()
+    ));
 }
 add_action('wp_enqueue_scripts', 'university_files');
 

@@ -196,6 +196,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 // object oriented javascript
+// AVOID dealing with dom when ever possible to keep code fast
 
 // create search class
 class Search {
@@ -206,7 +207,14 @@ class Search {
     this.openButton = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".js-search-trigger");
     this.closeButton = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".search-overlay__close");
     this.searchOverlay = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".search-overlay");
+    this.searchField = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#search-term'); // now this element is re-usable(improves speed)
+    this.resultsDiv = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#search-overlay__results');
     this.events();
+    this.isOverlayOpen = false;
+    this.isSpinnerVisible = false;
+    this.previousValue;
+    // make property for input id
+    this.typingTimer;
   }
 
   // 2. events 
@@ -215,25 +223,62 @@ class Search {
   events() {
     this.openButton.on("click", this.openOverlay.bind(this));
     this.closeButton.on("click", this.closeOverlay.bind(this));
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on("keyup", this.keyPressDispatcher.bind(this));
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on("keydown", this.keyPressDispatcher.bind(this));
+    this.searchField.on('keyup', this.typingLogic.bind(this));
   }
 
   // 3. methods (function, action...)
   openOverlay() {
     this.searchOverlay.addClass("search-overlay--active");
     jquery__WEBPACK_IMPORTED_MODULE_0___default()("body").addClass("body-no-scroll");
+    this.isOverlayOpen = true;
   }
   closeOverlay() {
     this.searchOverlay.removeClass("search-overlay--active");
     jquery__WEBPACK_IMPORTED_MODULE_0___default()("body").removeClass("body-no-scroll");
+    this.isOverlayOpen = false;
   }
   keyPressDispatcher(e) {
-    console.log(e.keyCode);
-    if (e.keyCode === 83) {
+    if (e.keyCode === 83 && !this.isOverlayOpen && jquery__WEBPACK_IMPORTED_MODULE_0___default()('input', 'textarea').is('focus')) {
       this.openOverlay();
-    } else if (e.keyCode === 27) {
+    } else if (e.keyCode === 27 && this.isOverlayOpen) {
       this.closeOverlay();
     }
+  }
+  typingLogic() {
+    if (this.searchField.val() !== this.previousValue) {
+      clearTimeout(this.typingTimer); // now everytime we press a key we clear/reset the timer
+
+      if (this.searchField.val() !== '') {
+        if (!this.isSpinnerVisible) {
+          this.resultsDiv.html('<div class="spinner-loader"></div>');
+          this.isSpinnerVisible = true;
+        }
+
+        // takes two args function and time
+        this.typingTimer = setTimeout(this.getResults.bind(this), 1000);
+      } else {
+        this.resultsDiv.html('');
+        this.isSpinnerVisible = false;
+      }
+    }
+    this.previousValue = this.searchField.val(); // using jquery val method to save value in search field
+  }
+
+  getResults() {
+    // getJSON takes two args url and function
+    // using an arrow function as the call back function does not change the 'this' keyword meaning
+    jquery__WEBPACK_IMPORTED_MODULE_0___default().getJSON(university_data.root_url + "/wp-json/wp/v2/posts?search=" + this.searchField.val(), posts => {
+      // within this anonymous function, 'this'keyword will point towards getJSON because that is what executed the method
+
+      this.resultsDiv.html(`
+                <h2 class="search-overla__section-title">General Information</h2>
+                ${posts.length ? '<ul class="link-list min-list">' : '<p>No general information matches that search.</p>'}
+                    ${posts.map(post => `<li><a href=${post.link}>${post.title.rendered}</a></li>`).join('')}
+                ${posts.length ? '</ul>' : ''}
+            `);
+      this.isSpinnerVisible = false;
+    });
   }
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Search);
