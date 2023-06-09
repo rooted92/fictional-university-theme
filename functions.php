@@ -1,5 +1,17 @@
 <?php
 
+// here we are getting our code from the includes folder
+require get_theme_file_path('/includes/search-route.php');
+function university_custom_rest() {
+    // this function adds a new field to rest api, takes 3 args
+    // this adds an authur name property to JSON
+    register_rest_field('post', 'author_name', array(
+        'get_callback' => function(){return get_the_author();}
+    ));
+}
+
+add_action('rest_api_init', 'university_custom_rest');
+
 // reusable function. Null makes args optional
 function pageBanner($args = null) {
     // php logic will live here
