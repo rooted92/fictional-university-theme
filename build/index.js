@@ -237,7 +237,9 @@ class Search {
       this.searchField.trigger('focus');
     }, 301);
     this.isOverlayOpen = true;
+    return false; // this will prevent the default behaviour of link elements
   }
+
   closeOverlay() {
     this.searchOverlay.removeClass("search-overlay--active");
     jquery__WEBPACK_IMPORTED_MODULE_0___default()("body").removeClass("body-no-scroll");

@@ -38,6 +38,7 @@ class Search {
         this.searchField.val('');
         setTimeout(() => { this.searchField.trigger('focus') }, 301)
         this.isOverlayOpen = true;
+        return false;// this will prevent the default behaviour of link elements
     }
 
     closeOverlay() {
